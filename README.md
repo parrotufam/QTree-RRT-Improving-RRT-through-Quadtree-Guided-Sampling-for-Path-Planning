@@ -1,129 +1,167 @@
 # QTree-RRT: Improving RRT through Quadtree-Guided Sampling for Path Planning
 
-[![Python](https://img.shields.io/badge/Python-3.8%2B-blue.svg?logo=python&logoColor=white)](https://www.python.org/)
+[![Python](https://img.shields.io/badge/Python-3.8%2B-blue.svg?logo=python\&logoColor=white)](https://www.python.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-## Sobre o Projeto
+## About the Project
 
-Este repositório apresenta a implementação do **QTree-RRT**, uma abordagem híbrida para **planejamento de caminhos em ambientes bidimensionais com obstáculos**.
+This repository presents the implementation of **QTree-RRT**, a hybrid approach for **path planning in two-dimensional environments with obstacles**.
 
-O método combina a **decomposição espacial por Quadtree** com o planejamento baseado em **Rapidly-exploring Random Tree (RRT)**. Inicialmente, o ambiente é decomposto em regiões por meio de uma Quadtree, permitindo identificar uma sequência de regiões livres que conecta o ponto inicial ao objetivo. Essa sequência forma um **corredor macro de navegação**, utilizado posteriormente para orientar a amostragem e o refinamento da trajetória.
+The method combines **Quadtree-based spatial decomposition** with planning based on the **Rapidly-exploring Random Tree (RRT)**. Initially, the environment is decomposed into regions using a Quadtree, allowing the identification of a sequence of free regions connecting the starting point to the goal. This sequence forms a **macro navigation corridor**, which is subsequently used to guide sampling and trajectory refinement.
 
-A implementação foi desenvolvida em **Python** e utiliza mapas em escala de cinza como representação dos ambientes de planejamento.
+The implementation was developed in **Python** and uses grayscale maps as the representation of the planning environments.
+
+
+**Paper:** [QTree-RRT: Improving RRT Through Quadtree-Guided Sampling for Path Planning](https://ieeexplore.ieee.org/abstract/document/11249615/)
+---
+
+## Repository Structure
+
+```
+QTree-RRT-Improving-RRT-through-Quadtree-Guided-Sampling-for-Path-Planning/
+│
+├── algorithms/
+│   └── qtree-rrt.py
+│
+├── SMPP dataset/
+│   ├── mapa01.png
+│   ├── mapa02.png
+│   ├── ...
+│   └── mapa50.png
+│
+├── LICENSE
+└── README.md
+```
+
+* **`algorithms/`** — QTree-RRT implementation.
+* **`SMPP dataset/`** — dataset containing 50 PNG maps used in the experiments.
+* **`LICENSE`** — MIT license for the project.
 
 ---
 
-## Estrutura do Repositório
+## Requirements
 
-    QTree-RRT-Improving-RRT-through-Quadtree-Guided-Sampling-for-Path-Planning/
-    │
-    ├── algorithms/
-    │   └── qtree-rrt.py
-    │
-    ├── dataset/
-    │   ├── mapa01.png
-    │   ├── mapa02.png
-    │   ├── ...
-    │   └── mapa50.png
-    │
-    ├── LICENSE
-    └── README.md
+* Python **3.8 or higher**
+* NumPy
+* Pillow
 
-- **`algorithms/`** — implementação do QTree-RRT.
-- **`dataset/`** — conjunto de 50 mapas PNG utilizados nos experimentos.
-- **`LICENSE`** — licença MIT do projeto.
+To check the installed Python version:
+
+```
+python3 --version
+```
 
 ---
 
-## Pré-requisitos
+## Installation
 
-- Python **3.8 ou superior**
-- NumPy
-- Pillow
+### 1. Clone the repository
 
-Para verificar a versão instalada do Python:
+```
+git clone https://github.com/YOUR-USERNAME/QTree-RRT-Improving-RRT-through-Quadtree-Guided-Sampling-for-Path-Planning.git
 
-    python3 --version
+cd QTree-RRT-Improving-RRT-through-Quadtree-Guided-Sampling-for-Path-Planning
+```
 
----
+### 2. Create a virtual environment
 
-## Instalação
+```
+python3 -m venv venv
+```
 
-### 1. Clonar o repositório
+On Linux/macOS:
 
-    git clone https://github.com/SEU-USUARIO/QTree-RRT-Improving-RRT-through-Quadtree-Guided-Sampling-for-Path-Planning.git
+```
+source venv/bin/activate
+```
 
-    cd QTree-RRT-Improving-RRT-through-Quadtree-Guided-Sampling-for-Path-Planning
+On Windows:
 
-### 2. Criar um ambiente virtual
+```
+venv\Scripts\activate
+```
 
-    python3 -m venv venv
+### 3. Install the dependencies
 
-No Linux/macOS:
-
-    source venv/bin/activate
-
-No Windows:
-
-    venv\Scripts\activate
-
-### 3. Instalar as dependências
-
-    pip install numpy pillow
+```
+pip install numpy pillow
+```
 
 ---
 
-## Execução
+## Execution
 
-A implementação pode ser executada diretamente pelo script principal:
+The implementation can be executed directly using the main script:
 
-    python3 algorithms/qtree-rrt.py
+```
+python3 algorithms/qtree-rrt.py
+```
 
-O algoritmo processa os mapas disponíveis no diretório `dataset/` conforme os parâmetros definidos no código.
-
----
-
-## Métricas
-
-Durante a execução, podem ser obtidas métricas relacionadas à estrutura de planejamento e à trajetória encontrada:
-
-| Métrica | Descrição |
-|---|---|
-| **Vértices** | Quantidade de pontos incorporados à estrutura de planejamento |
-| **Arestas** | Quantidade de conexões estabelecidas entre os vértices |
-| **Tempo de Execução** | Tempo necessário para realizar o planejamento |
-| **Custo da Rota** | Comprimento ou custo acumulado da trajetória encontrada |
-| **Waypoints** | Quantidade de pontos intermediários utilizados na trajetória |
-
-Essas métricas podem ser utilizadas para a análise experimental do comportamento do método em diferentes ambientes.
+The algorithm processes the maps available in the `SMPP dataset/` directory according to the parameters defined in the code.
 
 ---
 
-## Mapas
+## Metrics
 
-O diretório `dataset/` contém **50 mapas em escala de cinza** utilizados como ambientes de planejamento.
+During execution, metrics related to the planning structure and the resulting trajectory can be obtained:
 
-A representação dos mapas considera:
+| Metric             | Description                                               |
+| ------------------ | --------------------------------------------------------- |
+| **Vertices**       | Number of points incorporated into the planning structure |
+| **Edges**          | Number of connections established between vertices        |
+| **Execution Time** | Time required to perform the planning                     |
+| **Route Cost**     | Length or accumulated cost of the resulting trajectory    |
+| **Waypoints**      | Number of intermediate points used in the trajectory      |
 
-- **Branco:** espaço livre;
-- **Preto:** obstáculos.
-
-Os mapas são identificados sequencialmente de `mapa01.png` a `mapa50.png`.
-
----
-
-## Tecnologias
-
-- **Python** — implementação do algoritmo;
-- **NumPy** — operações numéricas;
-- **Pillow** — leitura e processamento dos mapas;
-- **Quadtree** — decomposição espacial;
-- **RRT** — planejamento baseado em amostragem.
+These metrics can be used for the experimental analysis of the method's behavior across different environments.
 
 ---
 
-## Licença
+## SMPP dataset
 
-Este projeto está disponível sob a **Licença MIT**.
+The `SMPP dataset/` directory contains the **SMPP (Synthetic Maps for Path Planning)** dataset, consisting of **50 grayscale maps** used as planning environments.
 
-Consulte o arquivo [`LICENSE`](LICENSE) para obter os termos completos da licença.
+The map representation considers:
+
+* **White:** free space;
+* **Black:** obstacles.
+
+The maps are sequentially identified from `mapa01.png` to `mapa50.png`.
+
+---
+
+## Technologies
+
+* **Python** — algorithm implementation;
+* **NumPy** — numerical operations;
+* **Pillow** — map reading and processing;
+* **Quadtree** — spatial decomposition;
+* **RRT** — sampling-based planning.
+
+---
+
+## Citation
+
+Use the following bibtex code to cite our QTree-RRT algorithm and our SMPP dataset.
+
+```bibtex
+@INPROCEEDINGS{11249615,
+  author={Bianor, Jhorlen Souza and de Abreu Dias, Lucas Matos and Drews-Jr, Paulo L. J. and Tello Gamarra, Daniel Fernando and Cukla, Anselmo Rafael and de Oliveira, Felipe Gomes},
+  booktitle={2025 Brazilian Symposium on Robotics (SBR) and 2025 Workshop on Robotics in Education (WRE)}, 
+  title={QTree-RRT: Improving RRT Through Quadtree-Guided Sampling for Path Planning}, 
+  year={2025},
+  volume={},
+  number={},
+  pages={170-175},
+  keywords={Costs;Navigation;Trees (botanical);Conferences;Education;Focusing;Path planning;Mobile robots;Reliability;Autonomous vehicles;Path Planning;RRT;Quadtree;Autonomous Navigation;Mobile Robotics},
+  doi={10.1109/SBR/WRE66973.2025.11249615}
+}
+```
+
+---
+
+## License
+
+This project is available under the **MIT License**.
+
+See the [`LICENSE`](LICENSE) file for the complete license terms.
