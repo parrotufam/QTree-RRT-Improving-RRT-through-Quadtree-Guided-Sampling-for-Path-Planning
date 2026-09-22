@@ -119,7 +119,13 @@ These metrics can be used for the experimental analysis of the method's behavior
 
 ## SMPP dataset
 
-The `SMPP dataset/` directory contains the **SMPP (Synthetic Maps for Path Planning)** dataset, consisting of **50 grayscale maps** used as planning environments.
+The `SMPP dataset/` directory contains the **SMPP (Synthetic Maps for Path Planning)** dataset, consisting of **50 grayscale maps** (with a resolution of **1544px**) used as planning environments.
+
+<p align="center">
+  <img src="caminho/para/sua/imagem1.png" width="300" alt="Legenda [X]">
+  <img src="caminho/para/sua/imagem2.png" width="300" alt="Legenda [Y]">
+  <img src="caminho/para/sua/imagem3.png" width="300" alt="Legenda [Z]">
+</p>
 
 The map representation considers:
 
