@@ -12,7 +12,7 @@ The method combines **Quadtree-based spatial decomposition** with planning based
 The implementation was developed in **Python** and uses grayscale maps as the representation of the planning environments.
 
 
-**Paper:** [QTree-RRT: Improving RRT Through Quadtree-Guided Sampling for Path Planning](https://sol.sbc.org.br/index.php/sbrlars/article/view/39229)
+**Paper:** [QTree-RRT: Improving RRT Through Quadtree-Guided Sampling for Path Planning](https://doi.org/10.1109/SBR/WRE66973.2025.11249615)
 ---
 
 ## Repository Structure
